@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Cupcake List</h1>
+
+{% for c in cupcakes %}
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ c }}</span>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
