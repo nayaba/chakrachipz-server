@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth import logout
 
 cupcakes = ['lemon rose', 'vanilla chai', 'chocolate chip cookie dough']
 
@@ -13,3 +14,7 @@ def cupcakes_index(request):
   return render(request, 'cupcakes.html', {
     'cupcakes': cupcakes
   })
+
+def logout_view(request):
+  logout(request)
+  return redirect('/')
