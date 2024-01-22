@@ -3,3 +3,47 @@
 {% load socialaccount %}
   <h2>Google Login</h2>
   <a href="{% provider_login_url 'google' %}?next=/">Login With Google</a>
+
+
+  {% extends 'base.html' %} {% block content %}
+
+{% load socialaccount %}
+
+{% if user.is_authenticated %}
+<p>Welcome, {{ user.username }}</p>
+{% else %}
+<div class="container">
+  <div class="row">
+      <div class="col s12 m6 offset-m3">
+          <div class="card grey lighten-3">
+              <div class="card-content black-text">
+                  <span class="card-title">Please sign in</span>
+                  <form class="form-signin">
+                      <div class="input-field">
+                          <input id="inputEmail" type="email" class="validate" required autofocus>
+                          <label for="inputEmail">Email address</label>
+                      </div>
+                      <div class="input-field">
+                          <input id="inputPassword" type="password" class="validate" required>
+                          <label for="inputPassword">Password</label>
+                      </div>
+                      <p>
+                          <label>
+                              <input type="checkbox" />
+                              <span>Remember me</span>
+                          </label>
+                      </p>
+                      <button class="btn waves-effect waves-light" type="submit">Sign in</button>
+                      <a href="{% provider_login_url 'google' %}" class="btn red" role="button">Sign in with Google</a>
+                  </form>
+              </div>
+              <div class="card-action">
+                  <p class="grey-text text-darken-1">&copy; 2017-2024</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+{% endif %} {% endblock %}
